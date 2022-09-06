@@ -67,7 +67,7 @@ resource "null_resource" "change_os_password" {
 
   provisioner "remote-exec" {
     inline = [
-      "echo ${var.current_os_password} | sudo -S echo sysadmin:${var.os_password} | sudo -S chpasswd"
+      "echo ${var.current_os_password} | sudo -S -i && echo sysadmin:${var.os_password} | sudo -S chpasswd"
     ]
   }
 
