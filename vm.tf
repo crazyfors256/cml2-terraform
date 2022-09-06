@@ -13,8 +13,8 @@ resource "random_string" "cml2_random_name" {
 resource "openstack_compute_flavor_v2" "cml2_flavor" {
   count     = var.replicas
   name      = "cml2-${random_string.cml2_random_name[count.index].result}-flavor"
-  ram       = "4096"
-  vcpus     = "2"
+  ram       = "8192"
+  vcpus     = "4"
   disk      = "32"
   is_public = "false"
 }

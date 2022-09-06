@@ -1,4 +1,4 @@
 #!/bin/bash
 id=$(curl -k -X 'POST' 'https://'$1'/api/v0/auth_extended' -H 'accept: application/json' -H 'Content-Type: application/json' -d '{ "username": "admin", "password": "'$2'" }' | jq -r '.id')
 token=$(curl -k -X 'POST' 'https://'$1'/api/v0/auth_extended' -H 'accept: application/json' -H 'Content-Type: application/json' -d '{ "username": "admin", "password": "'$2'" }' | jq -r '.token')
-curl -k -X 'PATCH' 'https://'$1'/api/v0/users/'$id'' -H 'accept: application/json' -H 'Authorization: Bearer '$token'' -H 'Content-Type: application/json' -d '{ "password": { "old_password": "P@ssw0rd", "new_password": "'$3'" }}'
+curl -k -X 'PATCH' 'https://'$1'/api/v0/users/'$id'' -H 'accept: application/json' -H 'Authorization: Bearer '$token'' -H 'Content-Type: application/json' -d '{ "password": { "old_password": "'$2'", "new_password": "'$3'" }}'
